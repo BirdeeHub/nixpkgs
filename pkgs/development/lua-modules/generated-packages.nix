@@ -2585,6 +2585,29 @@ buildLuarocksPackage {
   };
 }) {};
 
+lzextras = callPackage({ buildLuarocksPackage, fetchurl, fetchzip, luaOlder }:
+buildLuarocksPackage {
+  pname = "lzextras";
+  version = "0.1.17-1";
+  knownRockspec = (fetchurl {
+    url    = "mirror://luarocks/lzextras-0.1.17-1.rockspec";
+    sha256 = "038wqd9ahmavpg2bgszdrlv2417kf9k8mp679xq595qm348nis7g";
+  }).outPath;
+  src = fetchzip {
+    url    = "https://github.com/BirdeeHub/lzextras/archive/v0.1.17.zip";
+    sha256 = "0xdzkm2187x9lcf0a4x8sfz2pyhfpvm1m874ymb3b5ascalm0skv";
+  };
+
+  disabled = luaOlder "5.1";
+
+  meta = {
+    homepage = "https://github.com/BirdeeHub/lzextras";
+    description = "A collection of utilities and handlers for BirdeeHub/lze";
+    maintainers = with lib.maintainers; [ birdee ];
+    license.fullName = "GPL-2+";
+  };
+}) {};
+
 lzn-auto-require = callPackage({ buildLuarocksPackage, fetchurl, fetchzip, luaOlder, lz-n }:
 buildLuarocksPackage {
   pname = "lzn-auto-require";
