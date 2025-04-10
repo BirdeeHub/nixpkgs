@@ -215,8 +215,8 @@ addFlags() {
         reenableGlob=1
     fi
     set -o noglob
-    # shellcheck disable=SC2086
-    before=($1) after=($2)
+    eval "before=($1)"
+    eval "after=($2)"
     if (( reenableGlob )); then
         set +o noglob
     fi
